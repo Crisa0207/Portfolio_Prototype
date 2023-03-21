@@ -94,7 +94,11 @@ nav ul ul li a {
 /*FOOTER SECTION*/
 footer {
 	background-color: wheat;
-	padding: 20px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
 	display: flex;
 	justify-content: center;
 }
