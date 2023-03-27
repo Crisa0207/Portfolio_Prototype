@@ -1,64 +1,174 @@
 /*GLOBAL STYLES*/
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
 }
 
 body {
-	margin: 0;
-	font-family: Arial, sans-serif;
 	color: #333;
-	background-color: #FDF5E6;
+	background: #FDF5E6;
 }
 
+/*MEDIA QUERY FOR SMALL SCREENS*/
+@media (max-width: 768px) {
+	/*HAMBURGER MENU ICON*/
+	#menu-wrap {
+		display: block;
+		position: relative;
+		top: 50px; 
+		left: 50px;
+		z-index: 1;
+		
+		-webkit-user-select: none;
+		user-select: none;
+	}
+	#menu-wrap a {
+		text-decoration: none;
+		color: black;
+		transition: color 0.3s ease;
+	}
+	#menu-wrap a:hover {
+		color: white;
+	}
+	#menu-wrap input {
+		display: block;
+		width: 40px;
+		height: 32px;
+		position: absolute;
+		top: -7px;
+		left: -5px;
+		cursor: pointer;
+		opacity: 0;
+		z-index: 2;
+
+		-webkit-touch-callout: none;
+	}
+	#menu-wrap span {
+		display: block;
+		width: 33px;
+		height: 4px;
+		margin-bottom: 5px;
+		position: relative;
+		background: black;
+		border-radius: 3px;
+		z-index: 1;
+		transform-origin: 4px 0px;
+		transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0); background: 0.5s cubic-bezier(0.77,0.2,0.05,1.0); opacity: 0.55s ease;
+	}
+	#menu-wrap span:first-child {
+		transform-origin: 0% 0%;
+	}
+	#menu-wrap span:nth-last-child(2) {
+		transform-origin: 0% 100%;
+	}
+	#menu-wrap input:checked ~ span {
+		opacity: 1;
+		transform: rotate(45deg) translate(-2px, -1px);
+		background: black;
+	}
+	#menu-wrap input:checked ~ span:nth-last-child(3) {
+		opacity: 0;
+		transform: rotate(0deg) scale(0.2, 0.2);
+	}
+	#menu-wrap input:checked ~ span:nth-last-child(2) {
+		transform: rotate(-45deg) translate(0, -1px);
+	}
+	#menu {
+		position: absolute;
+		width: 300px;
+		margin: -100px 0 0 -50px;
+		padding: 50px;
+		padding-top: 125px;
+		background: lavender;
+		list-style-type: none;
+
+		-webkit-font-smoothing: antialiased;
+
+		transform-origin: 0% 0%;
+		transform: translate(-100%, 0);
+		transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+	}
+	#menu ul {
+		list-style: none;
+	}
+	#menu li {
+		padding: 10px 0;
+		font-size: 22px;
+	}
+	#menu ul li {
+		margin: 0;
+		padding: 0;
+	}
+	#menu-wrap input:checked ~ ul {
+		transform: none;
+	}
+
+}
+
+/*MEDIA QUERY FOR LARGER SCREENS*/
+@media (min-width: 768px) {
 /*NAVIGATION BAR*/
-header {
-	background-color: lavender;
-	padding: 20px;
-}
+	#menu-wrap {
+		height: 3em;
+		padding: 20px;
+	}
+	nav {
+		background-color: lavender;
+		padding: 20px;
+		position: relative;
+		top: -1em;
+	}
 
-nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	display: flex;
-	justify-content: center;
-}
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		justify-content: center;
+	}
 
-nav ul li {
-	position: relative;
-}
+	nav ul li {
+		position: relative;
+	}
 
-nav ul li a {
-	display: block;
-	padding: 10px 15px;
-	color: #333;
-	text-decoration: none;
-}
+	nav ul li a {
+		display: block;
+		padding: 10px 15px;
+		color: #333;
+		text-decoration: none;
+	}
 
-nav ul li:hover > ul {
-	display: block;
-}
+	nav ul li:hover > ul {
+		display: block;
+	}
 
-nav ul ul:hover {
-    background-color: white;
-}
+	nav ul ul:hover {
+		background-color: white;
+	}
 
-nav ul ul {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	background-color: lavender;
-}
+	nav ul ul {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background-color: lavender;
+	}
 
-nav ul ul li {
-	width: 200px;
-	border-bottom: 1px solid #ddd;
-}
+	nav ul ul li {
+		width: 200px;
+		border-bottom: 1px solid #ddd;
+	}
 
-nav ul ul li a {
-	padding: 10px 15px;
-	display: block;
+	nav ul ul li a {
+		padding: 10px 15px;
+		display: block;
+	}
+
+	#checkbox {
+		display: none;
+	}
 }
 
 /*PROJECT SECTION*/
@@ -77,13 +187,14 @@ nav ul ul li a {
   .project {
     padding: 20px;
     position: relative;
-    text-align: center;
+    text-align: left;
   }
 
 .project img {
 	display: block;
 	width: 100%;
 	height: auto;
+	padding-top: 3em;
 }
 
 .more-projects {
